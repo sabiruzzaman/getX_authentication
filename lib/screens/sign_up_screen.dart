@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:getx_authentication/screens/sign_in_screen.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:getx_authentication/contorller/sign_up_controller.dart';
 import 'package:getx_authentication/widget/widget_button.dart';
 import 'package:getx_authentication/widget/widget_input_field.dart';
 import 'package:getx_authentication/widget/widget_social_button.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SignUpScreen extends StatelessWidget {
-  const SignUpScreen({super.key});
+  SignUpScreen({super.key});
+
+  final SignUpController signUpController = Get.put(SignUpController());
 
   @override
   Widget build(BuildContext context) {
@@ -121,25 +125,47 @@ class SignUpScreen extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 40),
-                    const WidgetInputField(
+
+
+                    Obx(() => WidgetInputField(
                       label: "Email Address",
                       icon: Icons.email,
-                    ),
+                      controller: signUpController.emailController,
+                      errorText: signUpController.showErrors.value && !signUpController.emailIsValid.value
+                          ? "Enter a valid email"
+                          : null,
+                      keyboardType: TextInputType.emailAddress,
+                    )),
+
                     const SizedBox(height: 16),
-                    const WidgetInputField(
+
+                    Obx(() => WidgetInputField(
                       label: "Username",
                       icon: Icons.person,
-                    ),
-                    const SizedBox(height: 16),
-                    const WidgetInputField(
+                      controller: signUpController.usernameController,
+                      errorText: signUpController.showErrors.value && !signUpController.usernameIsValid.value
+                          ? "Username must be at least 6 characters"
+                          : null,
+                      keyboardType: TextInputType.text,
+                    )),
+
+
+                    Obx(() => WidgetInputField(
                       label: "Password",
                       icon: Icons.lock,
-                    ),
+                      controller: signUpController.passwordController,
+                      errorText: signUpController.showErrors.value && !signUpController.passwordIsValid.value
+                          ? "Password must be at least 6 characters"
+                          : null,
+                      keyboardType: TextInputType.visiblePassword,
+                    )),
+
+
                     const SizedBox(height: 30),
                     WidgetButton(
                       title: "Sign Up",
                       onTap: () {
-                        Navigator.pop(context);
+                        signUpController.signUp();
                       },
                     ),
                     const SizedBox(height: 38),

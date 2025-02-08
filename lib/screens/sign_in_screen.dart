@@ -1,6 +1,9 @@
 import 'dart:io';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:getx_authentication/contorller/sign_in_controller.dart';
 import 'package:getx_authentication/screens/sign_up_screen.dart';
 import 'package:getx_authentication/widget/widget_button.dart';
 import 'package:getx_authentication/widget/widget_input_field.dart';
@@ -8,7 +11,9 @@ import 'package:getx_authentication/widget/widget_social_button.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SignInScreen extends StatelessWidget {
-  const SignInScreen({super.key});
+   SignInScreen({super.key});
+
+  final SignInController signInController = Get.put(SignInController());
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +65,7 @@ class SignInScreen extends StatelessWidget {
                               onTap: () => Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => const SignUpScreen(),
+                                  builder: (context) => SignUpScreen(),
                                 ),
                               ),
                               child:  Container(
@@ -128,19 +133,43 @@ class SignInScreen extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 40),
-                    const WidgetInputField(
-                      label: "Email Address",
-                      icon: Icons.email,
+
+                    Obx(()=>
+                      WidgetInputField(
+                        controller: signInController.emailController,
+                        label: "Email Address",
+                        icon: Icons.email,
+                        errorText:  signInController.showErrors.value && !signInController.emailIsValid.value
+                            ? "Enter a valid email"
+                            : null,
+                        keyboardType: TextInputType.emailAddress,
+                      ),
                     ),
+
+
                     const SizedBox(height: 16),
-                    const WidgetInputField(
-                      label: "Password",
-                      icon: Icons.lock,
+
+                    Obx(()=>
+                      WidgetInputField(
+                        controller: signInController.passwordController,
+                        label: "Password",
+                        icon: Icons.lock,
+                        errorText: signInController.showErrors.value && !signInController.passwordIsValid.value
+                            ? "Password must be at least 6 characters"
+                            : null,
+                        keyboardType: TextInputType.visiblePassword,
+                      ),
                     ),
+
                     const SizedBox(height: 30),
                     WidgetButton(
                       title: "Sign In",
                       onTap: () {
+                        signInController.signIn(
+                          signInController.emailController.text,
+                          signInController.passwordController.text,
+                        );
+
                       },
                     ),
                     const SizedBox(height: 20),

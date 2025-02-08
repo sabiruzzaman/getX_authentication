@@ -4,10 +4,14 @@ import 'package:google_fonts/google_fonts.dart';
 
 class WidgetInputField extends StatelessWidget {
 
+  final TextEditingController controller;
   final String label;
   final IconData icon;
+  final String? errorText;
+  final TextInputType keyboardType;
 
-  const WidgetInputField({super.key, required this.label, required this.icon});
+  const WidgetInputField(
+      {super.key, required this.controller, required this.label, required this.icon, required this.errorText, required this.keyboardType});
 
   @override
   Widget build(BuildContext context) {
@@ -20,14 +24,18 @@ class WidgetInputField extends StatelessWidget {
           color: Color(0xFFE5E5E5),
         ),
       ),
-      child:  Padding(
+      child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: TextField(
+          controller: controller,
           decoration: InputDecoration(
-            label: Text(label, style: GoogleFonts.poppins(color: const Color(0xFFB1B1B1))),
+            label: Text(label,
+                style: GoogleFonts.poppins(color: const Color(0xFFB1B1B1))),
             border: InputBorder.none,
             prefixIcon: Icon(icon),
+            errorText:  errorText,
           ),
+          keyboardType: keyboardType,
         ),
       ),
     );
