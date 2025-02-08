@@ -1,16 +1,14 @@
-# getx_authentication
+## 🚀 Figma to Flutter UI Challenge - 2 🎨➡️📱
 
-A new Flutter project.
+As a Flutter learner, I picked a random UI design from Dribbble and challenged myself to bring it to life in Flutter! 🛠️ This helped me practice UI development and level up my Flutter skills.</br>
 
-## Getting Started
+💡 What I Learned:</br>
+✅ Breaking down UI into reusable Flutter widgets</br>
+✅ Managing layout and responsiveness effectively</br>
+✅ Choosing the right Flutter components</br>
+✅ Working with Cards and MediaQuery for a better adaptive design</br>
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🌟 Screenshots
+<div align="center">
+  <img src="screenshot/banner.png" alt="Banner" width="70%">
+</div>
