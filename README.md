@@ -8,6 +8,12 @@ As a Flutter learner, I picked a random UI design from Dribbble and challenged m
 ✅ Choosing the right Flutter components</br>
 ✅ Working with Cards and MediaQuery for a better adaptive design</br>
 
+🔧 Tech Stack
+- Flutter (Dart)</br>
+- getX and Get Storage </br>
+- Responsive UI</br>
+- Modern & Clean Design</br>
+
 ## 🌟 Screenshots
 <div align="center">
   <img src="screenshot/banner.png" alt="Banner" width="70%">
