@@ -18,3 +18,8 @@ As a Flutter learner, I picked a random UI design from Dribbble and challenged m
 <div align="center">
   <img src="screenshot/banner.png" alt="Banner" width="70%">
 </div>
+</br>
+<div align="center">
+  <img src="screenshot/banner_2.png" alt="Banner" width="70%">
+</div>
+
